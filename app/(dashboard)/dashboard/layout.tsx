@@ -16,6 +16,7 @@ import {
   SidebarSeparator,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
+import { ModeToggle } from "@/components/mode-toggle"
 
 export default async function DashboardLayout({
   children,
@@ -33,7 +34,7 @@ export default async function DashboardLayout({
 
   return (
     <SidebarProvider>
-      <div className="flex min-h-screen flex-col w-full">
+      <div className="flex min-h-screen flex-col ">
         <header className="top-0 border-b bg-background">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center gap-2">
@@ -43,7 +44,9 @@ export default async function DashboardLayout({
                 <span>ChatterCraft</span>
               </div>
             </div>
-            <UserButton afterSignOutUrl="/" />
+            <div className="mr-5">
+              <UserButton afterSignOutUrl="/" />
+            </div>
           </div>
         </header>
 
@@ -81,7 +84,11 @@ export default async function DashboardLayout({
             <SidebarFooter>
               <SidebarSeparator />
               <div className="p-4">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col gap-4 justify-between">
+                  <div className="flex items-center gap-2">
+                    <ModeToggle />
+                    <p className="text-sm text-muted-foreground">Theme</p>
+                  </div>
                   <div className="flex items-center">
                     <div className="mr-2 h-8">
                       <UserButton
@@ -98,7 +105,7 @@ export default async function DashboardLayout({
             </SidebarFooter>
           </Sidebar>
 
-          <main className="flex-1 py-6">{children}</main>
+          <main className="flex-1 p-3 sm:p-6">{children}</main>
         </div>
       </div>
     </SidebarProvider>
