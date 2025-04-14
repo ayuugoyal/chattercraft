@@ -1,11 +1,21 @@
 import type React from "react"
 import { UserButton } from "@clerk/nextjs"
 import { redirect } from "next/navigation"
-import { auth } from "@clerk/nextjs/server"
+import { auth, clerkClient } from "@clerk/nextjs/server"
 import Link from "next/link"
 import { Bot, LayoutDashboard } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarProvider,
+  SidebarSeparator,
+  SidebarTrigger,
+} from "@/components/ui/sidebar"
 
 export default async function DashboardLayout({
   children,
@@ -18,38 +28,79 @@ export default async function DashboardLayout({
     redirect("/sign-in")
   }
 
+  const clerk = await clerkClient()
+  const user = await clerk.users.getUser(userId);
+
   return (
-    <div className="flex min-h-screen flex-col">
-      <header className="sticky top-0 z-50 border-b bg-background">
-        <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-2 font-bold text-xl">
-            <Bot className="h-6 w-6" />
-            <span>ChatterCraft</span>
+    <SidebarProvider>
+      <div className="flex min-h-screen flex-col w-full">
+        <header className="top-0 border-b bg-background">
+          <div className="flex h-16 items-center justify-between">
+            <div className="flex items-center gap-2">
+              <SidebarTrigger className="md:hidden" />
+              <div className="flex items-center gap-2 font-bold text-xl">
+                <Bot className="h-6 w-6" />
+                <span>ChatterCraft</span>
+              </div>
+            </div>
+            <UserButton afterSignOutUrl="/" />
           </div>
-          <UserButton afterSignOutUrl="/" />
+        </header>
+
+        <div className="flex-1 flex">
+          <Sidebar>
+            <SidebarHeader>
+              <div className="flex items-center gap-2 font-bold text-xl p-4">
+                <Bot className="h-6 w-6" />
+                <span className="group-data-[collapsible=icon]:hidden">ChatterCraft</span>
+              </div>
+            </SidebarHeader>
+
+            <SidebarContent>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild tooltip="Dashboard">
+                    <Link href="/dashboard">
+                      <LayoutDashboard className="h-4 w-4" />
+                      <span>Dashboard</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild tooltip="Agents">
+                    <Link href="/dashboard/agents">
+                      <Bot className="h-4 w-4" />
+                      <span>Agents</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarContent>
+
+            <SidebarFooter>
+              <SidebarSeparator />
+              <div className="p-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <div className="mr-2 h-8">
+                      <UserButton
+                        afterSignOutUrl="/"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium">{user?.fullName}</p>
+                      <p className="text-xs text-muted-foreground">{user?.emailAddresses[0].emailAddress}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </SidebarFooter>
+          </Sidebar>
+
+          <main className="flex-1 container py-6">{children}</main>
         </div>
-      </header>
-      <div className="container flex-1 items-start md:grid md:grid-cols-[220px_1fr] md:gap-6 lg:grid-cols-[240px_1fr] lg:gap-10">
-        <aside className="fixed top-16 z-30 -ml-2 hidden h-[calc(100vh-4rem)] w-full shrink-0 md:sticky md:block">
-          <div className="h-full py-6 pr-6 lg:py-8">
-            <nav className="flex flex-col space-y-2">
-              <Link href="/dashboard">
-                <Button variant="ghost" className="w-full justify-start gap-2">
-                  <LayoutDashboard className="h-4 w-4" />
-                  Dashboard
-                </Button>
-              </Link>
-              <Link href="/dashboard/agents">
-                <Button variant="ghost" className="w-full justify-start gap-2">
-                  <Bot className="h-4 w-4" />
-                  Agents
-                </Button>
-              </Link>
-            </nav>
-          </div>
-        </aside>
-        <main className="flex w-full flex-col overflow-hidden py-6">{children}</main>
       </div>
-    </div>
+    </SidebarProvider>
   )
 }

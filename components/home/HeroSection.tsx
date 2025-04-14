@@ -1,11 +1,14 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRightIcon, Play } from 'lucide-react';
+import { ArrowRightIcon } from 'lucide-react';
 import HeroVideoDialog from "../magicui/hero-video-dialog";
 import { BorderBeam } from "../magicui/border-beam";
+import { useClerk } from "@clerk/nextjs"
+import Link from "next/link";
 
 export default function HeroSection() {
+  const { isSignedIn } = useClerk();
   return (
     <section className="relative pt-28 pb-20 overflow-hidden">
       {/* Background Effects */}
@@ -78,14 +81,12 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <Button size="lg" className="text-base py-6 px-8 group">
-              Get Started Free
-              <ArrowRightIcon className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button variant="outline" size="lg" className="text-base py-6 px-8">
-              <Play className="mr-2 h-4 w-4" />
-              Watch Demo
-            </Button>
+            <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
+              <Button size="lg" className="text-base py-6 px-8 group">
+                {isSignedIn ? "Go to Dashboard" : "Get Started Free"}
+                <ArrowRightIcon className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
           </motion.div>
         </div>
         {/* 
