@@ -61,17 +61,20 @@ export async function createAgent(formData: AgentFormValues) {
     }
 
     // Insert new agent
-    await db.insert(agents).values({
+    const details = await db.insert(agents).values({
       userId,
       name,
       slug,
       systemPrompt,
       modelProvider,
       isActive: true,
-    });
+    }).returning();
 
     revalidatePath("/dashboard/agents");
-    return { success: true };
+    return {
+      success: true,
+      details,
+    };
   } catch (error) {
     console.error("Failed to create agent:", error);
     return { error: "Failed to create agent. Please try again." };

@@ -3,6 +3,7 @@ import { Bot, MessageSquare, Users } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { getUserAgents } from "@/lib/actions/agent-actions"
+import { AgentPopUp } from "@/components/agents-popup"
 
 export default async function DashboardPage() {
   const agents = await getUserAgents()
@@ -11,6 +12,7 @@ export default async function DashboardPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
+        <AgentPopUp />
         <Link href="/dashboard/agents/new">
           <Button>Create Agent</Button>
         </Link>
