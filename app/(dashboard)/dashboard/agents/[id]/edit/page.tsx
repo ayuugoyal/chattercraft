@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { toast } from "@/hooks/use-toast"
 import { updateAgent, type AgentFormValues } from "@/lib/actions/agent-actions"
 
@@ -150,21 +149,6 @@ export default function EditAgentPage({ params }: { params: { id: string } }) {
 
             <FormField
               control={form.control}
-              name="slug"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Slug</FormLabel>
-                  <FormControl>
-                    <Input placeholder="support-bot" {...field} />
-                  </FormControl>
-                  <FormDescription>Used in the URL for your chatbot. Must be unique.</FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
               name="systemPrompt"
               render={({ field }) => (
                 <FormItem>
@@ -173,29 +157,6 @@ export default function EditAgentPage({ params }: { params: { id: string } }) {
                     <Textarea placeholder="You are a helpful AI assistant..." className="min-h-32" {...field} />
                   </FormControl>
                   <FormDescription>Instructions that define how your chatbot behaves.</FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="modelProvider"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Model Provider</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a model provider" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="gemini">Google Gemini</SelectItem>
-
-                    </SelectContent>
-                  </Select>
-                  <FormDescription>The AI provider for your chatbot.</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}

@@ -6,6 +6,7 @@ import {
   boolean,
   uuid,
 } from "drizzle-orm/pg-core";
+import { InferModel } from "drizzle-orm/table";
 
 export const agents = pgTable("agents", {
   id: uuid("id").primaryKey().unique().defaultRandom().notNull(),
@@ -18,3 +19,5 @@ export const agents = pgTable("agents", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
+
+export type AgentTable = InferModel<typeof agents>;

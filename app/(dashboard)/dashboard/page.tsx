@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge"
 export default async function DashboardPage() {
   const agents = await getUserAgents()
   return (
-    <div className="space-y-8 pb-10">
+    <div className="space-y-8 pb-10 w-fit">
       <div className="flex flex-row items-start sm:items-center justify-between gap-4">
         <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
         <AgentPopUp />

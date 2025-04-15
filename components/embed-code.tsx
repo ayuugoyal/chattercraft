@@ -2,20 +2,20 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Check, Copy } from "lucide-react"
+import { Check, Copy, ExternalLink } from "lucide-react"
+import Link from "next/link"
 
 interface EmbedCodeProps {
-  slug: string
-  baseUrl?: string
+  name: string,
+  baseUrl: string
+  testButton?: boolean
 }
 
-export function EmbedCode({ slug, baseUrl = "https://chatappsaas.ai" }: EmbedCodeProps) {
+export function CopyLink({ name, baseUrl, testButton }: EmbedCodeProps) {
   const [copied, setCopied] = useState(false)
 
-  const embedCode = `<script src="${baseUrl}/embed.js" data-slug="${slug}"></script>`
-
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(embedCode)
+    navigator.clipboard.writeText(baseUrl)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
@@ -23,22 +23,34 @@ export function EmbedCode({ slug, baseUrl = "https://chatappsaas.ai" }: EmbedCod
   return (
     <div className="bg-muted p-4 rounded-md">
       <div className="flex items-center justify-between mb-2">
-        <p className="text-sm font-medium">Embed Code</p>
-        <Button variant="ghost" size="sm" className="h-8 gap-1" onClick={copyToClipboard}>
-          {copied ? (
-            <>
-              <Check className="h-3.5 w-3.5" />
-              <span>Copied!</span>
-            </>
-          ) : (
-            <>
-              <Copy className="h-3.5 w-3.5" />
-              <span>Copy</span>
-            </>
-          )}
-        </Button>
+        <p className="text-sm font-medium">{name}</p>
+        <div>
+
+          {
+            testButton &&
+            <Link href={baseUrl} target="_blank">
+              <Button variant="ghost" size="sm" className="h-8 gap-1 hover:underline" >
+                <ExternalLink className="h-4 w-4" />
+                Test Agent
+              </Button>
+            </Link>
+          }
+          <Button variant="ghost" size="sm" className="h-8 gap-1 " onClick={copyToClipboard}>
+            {copied ? (
+              <>
+                <Check className="h-3.5 w-3.5" />
+                <span>Copied!</span>
+              </>
+            ) : (
+              <>
+                <Copy className="h-3.5 w-3.5" />
+                <span>Copy</span>
+              </>
+            )}
+          </Button>
+        </div>
       </div>
-      <pre className="bg-background p-3 rounded border overflow-x-auto text-xs">{embedCode}</pre>
-    </div>
+      <pre className="bg-background p-3 rounded border overflow-x-auto text-xs">{baseUrl}</pre>
+    </div >
   )
 }

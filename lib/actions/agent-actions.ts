@@ -61,14 +61,17 @@ export async function createAgent(formData: AgentFormValues) {
     }
 
     // Insert new agent
-    const details = await db.insert(agents).values({
-      userId,
-      name,
-      slug,
-      systemPrompt,
-      modelProvider,
-      isActive: true,
-    }).returning();
+    const details = await db
+      .insert(agents)
+      .values({
+        userId,
+        name,
+        slug,
+        systemPrompt,
+        modelProvider,
+        isActive: true,
+      })
+      .returning();
 
     revalidatePath("/dashboard/agents");
     return {

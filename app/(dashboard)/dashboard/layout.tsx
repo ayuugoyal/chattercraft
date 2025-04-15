@@ -34,7 +34,7 @@ export default async function DashboardLayout({
 
   return (
     <SidebarProvider>
-      <div className="flex min-h-screen flex-col ">
+      <div className="flex min-h-screen flex-col w-full ">
         <header className="top-0 border-b bg-background">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center gap-2">
@@ -50,7 +50,7 @@ export default async function DashboardLayout({
           </div>
         </header>
 
-        <div className="flex-1 flex">
+        <div className="flex">
           <Sidebar>
             <SidebarHeader>
               <div className="flex items-center gap-2 font-bold text-xl p-4">
@@ -105,7 +105,7 @@ export default async function DashboardLayout({
             </SidebarFooter>
           </Sidebar>
 
-          <main className="flex-1 p-3 sm:p-6">{children}</main>
+          <main className="p-3 sm:p-6 w-full">{children}</main>
         </div>
       </div>
     </SidebarProvider>
