@@ -17,7 +17,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const url = process.env.NEXT_PUBLIC_URL || "http://localhost:3000" + "/embed.js"
+  const url = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000" + "/embed.js"
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
