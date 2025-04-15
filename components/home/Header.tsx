@@ -57,7 +57,7 @@ export function Header() {
         {/* Mobile Navigation */}
         <MobileNav>
           <MobileNavHeader>
-            {/* <NavbarLogo logoText="ChattercraftAI" /> */}
+            <NavbarLogo />
             <MobileNavToggle
               isOpen={isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
