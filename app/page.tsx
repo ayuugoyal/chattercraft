@@ -5,12 +5,12 @@ import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Header } from '@/components/home/Header';
 import HeroSection from '@/components/home/HeroSection';
-import TrustedBySection from '@/components/home/TrustedBySection';
+// import TrustedBySection from '@/components/home/TrustedBySection';
 import HowItWorksSection from '@/components/home/HowItWorksSection';
 import FeaturesSection from '@/components/home/FeaturesSection';
 import ChatDemoSection from '@/components/home/ChatDemoSection';
-import PricingSection from '@/components/home/PricingSection';
-import TestimonialsSection from '@/components/home/TestimonialsSection';
+// import PricingSection from '@/components/home/PricingSection';
+// import TestimonialsSection from '@/components/home/TestimonialsSection';
 import FaqSection from '@/components/home/FaqSection';
 import CtaSection from '@/components/home/CtaSection';
 import Footer from '@/components/home/Footer';
@@ -52,12 +52,12 @@ export default function Home() {
       <main>
         <ScrollProgress />
         <HeroSection />
-        <TrustedBySection />
+        {/* <TrustedBySection /> */}
         <HowItWorksSection />
         <FeaturesSection />
         <ChatDemoSection />
-        <PricingSection />
-        <TestimonialsSection />
+        {/* <PricingSection /> */}
+        {/* <TestimonialsSection /> */}
         <FaqSection />
         <CtaSection />
       </main>

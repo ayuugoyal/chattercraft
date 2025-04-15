@@ -27,12 +27,8 @@ export function Header() {
       link: "#features",
     },
     {
-      name: "Pricing",
-      link: "#pricing",
-    },
-    {
-      name: "Contact",
-      link: "#contact",
+      name: "Demo",
+      link: "#demo",
     },
   ];
 
@@ -61,7 +57,7 @@ export function Header() {
         {/* Mobile Navigation */}
         <MobileNav>
           <MobileNavHeader>
-            <NavbarLogo />
+            {/* <NavbarLogo logoText="ChattercraftAI" /> */}
             <MobileNavToggle
               isOpen={isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -83,20 +79,21 @@ export function Header() {
               </a>
             ))}
             <div className="flex w-full flex-col gap-4">
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full"
-              >
-                Login
-              </NavbarButton>
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full"
-              >
-                Book a call
-              </NavbarButton>
+              <ModeToggle />
+              {
+                isSignedIn ?
+                  null :
+                  <>
+                    <NavbarButton href="/sign-in"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="w-full"
+                      variant="secondary">Sign In</NavbarButton>
+                    <NavbarButton
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="w-full"
+                      variant="primary" href="sign-up">Sign Up</NavbarButton>
+                  </>
+              }
             </div>
           </MobileNavMenu>
         </MobileNav>

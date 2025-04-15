@@ -2,12 +2,14 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRightIcon } from "lucide-react";
+import Link from "next/link";
+import { useClerk } from "@clerk/nextjs";
 
 export default function CtaSection() {
+  const { isSignedIn } = useClerk();
   return (
     <section className="py-20 relative overflow-hidden">
-      {/* Background Effects */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 radial-gradient opacity-60" />
       </div>
@@ -25,20 +27,16 @@ export default function CtaSection() {
               Ready to Transform Your Customer Experience?
             </h2>
             <p className="text-lg mb-8 text-foreground/80">
-              Join thousands of businesses using Chatwise to provide instant support, boost sales, and delight customers.
+              Create your AI agent right now
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-base py-6 px-8 group">
-                Get Started Free
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button variant="outline" size="lg" className="text-base py-6 px-8">
-                Schedule a Demo
-              </Button>
+              <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
+                <Button size="sm" className="">
+                  {isSignedIn ? "Go to Dashboard" : "Get Started Free"}
+                  <ArrowRightIcon className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
             </div>
-            <p className="mt-6 text-sm text-foreground/60">
-              No credit card required. 14-day free trial.
-            </p>
           </motion.div>
         </div>
       </div>

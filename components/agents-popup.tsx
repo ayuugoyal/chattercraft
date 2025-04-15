@@ -87,7 +87,7 @@ export function AgentPopUp() {
           description: `Your agent "${values.name}" has been created successfully.`,
         })
         router.push(`/dashboard/agents/${result.details[0].id}`)
-        router.refresh()
+        // router.refresh()
       }
     } catch (error) {
       console.log(error)
@@ -110,7 +110,7 @@ export function AgentPopUp() {
   return (
     <div>
       <Modal>
-        <ModalTrigger className="bg-black dark:bg-white dark:text-black text-white flex justify-center group/modal-btn">
+        <ModalTrigger className="bg-primary text-white flex justify-center group/modal-btn">
           <span className="group-hover/modal-btn:translate-x-40 text-center transition duration-500">
             + Create Agent
           </span>

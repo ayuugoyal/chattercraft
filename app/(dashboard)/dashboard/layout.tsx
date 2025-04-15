@@ -40,8 +40,8 @@ export default async function DashboardLayout({
             <div className="flex items-center gap-2">
               <SidebarTrigger className="md:hidden" />
               <div className="flex items-center gap-2 font-bold text-xl">
-                <Bot className="h-6 w-6" />
-                <span>ChatterCraft</span>
+                {/* <Bot className="h-6 w-6" />
+                <span>ChatterCraft</span> */}
               </div>
             </div>
             <div className="mr-5">

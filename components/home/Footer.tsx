@@ -1,56 +1,59 @@
-"use client";
+"use client"
 
-const footerLinks = [
-  {
-    title: "Product",
-    links: [
-      { label: "Features", href: "#features" },
-      { label: "Pricing", href: "#pricing" },
-      { label: "Demo", href: "#demo" },
-      { label: "FAQ", href: "#faq" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "About", href: "#about" },
-      { label: "Blog", href: "#blog" },
-      { label: "Careers", href: "#careers" },
-      { label: "Contact", href: "#contact" },
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
-      { label: "Documentation", href: "#docs" },
-      { label: "API Reference", href: "#api" },
-      { label: "Integrations", href: "#integrations" },
-      { label: "Case Studies", href: "#case-studies" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { label: "Terms", href: "#terms" },
-      { label: "Privacy", href: "#privacy" },
-      { label: "Security", href: "#security" },
-      { label: "Compliance", href: "#compliance" },
-    ],
-  },
-];
+import Link from "next/link"
+
+// const footerLinks = [
+//   {
+//     title: "Product",
+//     links: [
+//       { label: "Features", href: "#features" },
+//       { label: "Pricing", href: "#pricing" },
+//       { label: "Demo", href: "#demo" },
+//       { label: "FAQ", href: "#faq" },
+//     ],
+//   },
+//   {
+//     title: "Company",
+//     links: [
+//       { label: "About", href: "#about" },
+//       { label: "Blog", href: "#blog" },
+//       { label: "Careers", href: "#careers" },
+//       { label: "Contact", href: "#contact" },
+//     ],
+//   },
+//   {
+//     title: "Resources",
+//     links: [
+//       { label: "Documentation", href: "#docs" },
+//       { label: "API Reference", href: "#api" },
+//       { label: "Integrations", href: "#integrations" },
+//       { label: "Case Studies", href: "#case-studies" },
+//     ],
+//   },
+//   {
+//     title: "Legal",
+//     links: [
+//       { label: "Terms", href: "#terms" },
+//       { label: "Privacy", href: "#privacy" },
+//       { label: "Security", href: "#security" },
+//       { label: "Compliance", href: "#compliance" },
+//     ],
+//   },
+// ]
 
 export default function Footer() {
   return (
     <footer className="bg-muted/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="pt-16 pb-8 border-b border-border">
+        {/* <div className="pt-16 pb-8 border-b border-border">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             <div className="lg:col-span-2">
               <a href="#" className="text-2xl font-bold text-gradient inline-block mb-4">
-                Chatwise
+                ChattercraftAI
               </a>
               <p className="text-foreground/70 max-w-md mb-6">
-                AI-powered customer support that answers questions, recommends products, and escalates complex issues automatically.
+                AI-powered customer support that answers questions, recommends products, and escalates complex issues
+                automatically.
               </p>
               <div className="flex space-x-4">
                 <a href="#" className="text-foreground/60 hover:text-foreground">
@@ -68,7 +71,11 @@ export default function Footer() {
                 <a href="#" className="text-foreground/60 hover:text-foreground">
                   <span className="sr-only">GitHub</span>
                   <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                    <path
+                      fillRule="evenodd"
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                      clipRule="evenodd"
+                    />
                   </svg>
                 </a>
               </div>
@@ -80,10 +87,7 @@ export default function Footer() {
                   <ul className="space-y-2">
                     {category.links.map((link, linkIndex) => (
                       <li key={linkIndex}>
-                        <a
-                          href={link.href}
-                          className="text-foreground/70 hover:text-foreground transition-colors"
-                        >
+                        <a href={link.href} className="text-foreground/70 hover:text-foreground transition-colors">
                           {link.label}
                         </a>
                       </li>
@@ -93,25 +97,17 @@ export default function Footer() {
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
 
-        <div className="py-8 flex flex-col md:flex-row justify-between items-center">
+        <div className="py-8 flex flex-col justify-center items-center">
           <p className="text-foreground/60 mb-4 md:mb-0">
-            © {new Date().getFullYear()} Chatwise. All rights reserved.
+            © {new Date().getFullYear()} ChattercraftAI. All rights reserved.
           </p>
-          <div className="flex space-x-6">
-            <a href="#terms" className="text-foreground/60 hover:text-foreground">
-              Terms of Service
-            </a>
-            <a href="#privacy" className="text-foreground/60 hover:text-foreground">
-              Privacy Policy
-            </a>
-            <a href="#cookies" className="text-foreground/60 hover:text-foreground">
-              Cookie Settings
-            </a>
-          </div>
+          <p className="text-foreground/60 mb-4 md:mb-0">
+            made with 💖 by <Link href={"https://ayuugoyal.tech"} className="text-blue-400 hover:underline">@ayuugoyal</Link>
+          </p>
         </div>
       </div>
     </footer>
-  );
+  )
 }

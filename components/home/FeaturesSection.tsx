@@ -1,8 +1,7 @@
 "use client"
 
-
 import { motion } from "framer-motion";
-import { MessageSquare, ShoppingBag, MailPlus, Code, BarChart, Shield } from "lucide-react";
+import { MessageSquare, ShoppingBag, Code } from 'lucide-react';
 
 const features = [
   {
@@ -17,30 +16,30 @@ const features = [
     icon: ShoppingBag,
     color: "bg-purple-500/10 text-purple-500",
   },
-  {
-    title: "Automatic Escalation",
-    description: "Out-of-scope questions get automatically routed to your support team via email with context included.",
-    icon: MailPlus,
-    color: "bg-amber-500/10 text-amber-500",
-  },
+  // {
+  //   title: "Automatic Escalation",
+  //   description: "Out-of-scope questions get automatically routed to your support team via email with context included.",
+  //   icon: MailPlus,
+  //   color: "bg-amber-500/10 text-amber-500",
+  // },
   {
     title: "Simple Integration",
-    description: "Just one line of code to add Chatwise to any website, with special plugins for Shopify and WordPress.",
+    description: "Just one line of code to add ChattercraftAI to any website, with special plugins for Shopify and WordPress.",
     icon: Code,
     color: "bg-green-500/10 text-green-500",
   },
-  {
-    title: "Analytics Dashboard",
-    description: "Track performance metrics, customer satisfaction, and gain insights from conversation history.",
-    icon: BarChart,
-    color: "bg-indigo-500/10 text-indigo-500",
-  },
-  {
-    title: "Enterprise Security",
-    description: "Bank-level encryption and data protection to keep your customer interactions safe and private.",
-    icon: Shield,
-    color: "bg-red-500/10 text-red-500",
-  },
+  // {
+  //   title: "Analytics Dashboard",
+  //   description: "Track performance metrics, customer satisfaction, and gain insights from conversation history.",
+  //   icon: BarChart,
+  //   color: "bg-indigo-500/10 text-indigo-500",
+  // },
+  // {
+  //   title: "Enterprise Security",
+  //   description: "Bank-level encryption and data protection to keep your customer interactions safe and private.",
+  //   icon: Shield,
+  //   color: "bg-red-500/10 text-red-500",
+  // },
 ];
 
 export default function FeaturesSection() {

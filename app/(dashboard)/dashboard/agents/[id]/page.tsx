@@ -2,8 +2,9 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { getAgentById } from "@/lib/actions/agent-actions"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Bot, MessageSquare, User } from "lucide-react"
+// import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+// import { Bot, Cog, MessageSquare, User } from "lucide-react"
+// import { Cog } from "lucide-react"
 import AgentHeader from "@/components/agent-page/agent-header" // Assuming this is the correct component
 import AgentTabs from "@/components/agent-page/agent-tabs"
 
@@ -25,9 +26,16 @@ export default async function AgentDetailPage({ params }: { params: { id: string
           </Button>
         </Link>
       </div>
-      <AgentHeader {...agentData} />
-
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="flex justify-between items-center">
+        <AgentHeader {...agentData} />
+        {/* <Link href={`/dashboard/agents/${agentData.id}/settings`}>
+          <Button variant="outline" size="sm">
+            <Cog className="h-4 w-4 mr-2" />
+            Settings
+          </Button>
+        </Link> */}
+      </div>
+      {/* <div className="grid gap-4 md:grid-cols-3">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Model Provider</CardTitle>
@@ -58,7 +66,7 @@ export default async function AgentDetailPage({ params }: { params: { id: string
             <p className="text-xs text-muted-foreground">Distinct end users</p>
           </CardContent>
         </Card>
-      </div>
+      </div> */}
 
       {/* Tabs */}
       <AgentTabs {...agentData} />

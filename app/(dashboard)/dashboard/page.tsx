@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
-import { Bot, MessageSquare, Users, ExternalLink, Link as LinkIcon } from "lucide-react"
+import { Bot, ExternalLink, Link as LinkIcon } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { getUserAgents } from "@/lib/actions/agent-actions"
@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge"
 export default async function DashboardPage() {
   const agents = await getUserAgents()
   return (
-    <div className="space-y-8 pb-10 w-fit">
+    <div className="space-y-8 pb-10">
       <div className="flex flex-row items-start sm:items-center justify-between gap-4">
         <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
         <AgentPopUp />
@@ -30,7 +30,7 @@ export default async function DashboardPage() {
             </p>
           </CardContent>
         </Card>
-        <Card className="hover:shadow-md transition-shadow">
+        {/* <Card className="hover:shadow-md transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Conversations</CardTitle>
             <MessageSquare className="h-4 w-4 text-muted-foreground" />
@@ -39,8 +39,8 @@ export default async function DashboardPage() {
             <div className="text-2xl font-bold">-</div>
             <p className="text-xs text-muted-foreground">Track your agent conversations</p>
           </CardContent>
-        </Card>
-        <Card className="hover:shadow-md transition-shadow">
+        </Card> */}
+        {/* <Card className="hover:shadow-md transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Active Users</CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
@@ -49,7 +49,7 @@ export default async function DashboardPage() {
             <div className="text-2xl font-bold">-</div>
             <p className="text-xs text-muted-foreground">Monitor user engagement</p>
           </CardContent>
-        </Card>
+        </Card> */}
       </div>
 
       {/* My Agents Section */}

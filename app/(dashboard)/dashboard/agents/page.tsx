@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Bot, Plus } from "lucide-react"
+import { Bot } from "lucide-react"
 import Link from "next/link"
 import { getUserAgents } from "@/lib/actions/agent-actions"
 import { DeleteAgentButton } from "@/components/delete-agent-button"
+import { AgentPopUp } from "@/components/agents-popup"
 
 export default async function AgentsPage() {
   const agents = await getUserAgents()
@@ -12,12 +13,7 @@ export default async function AgentsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold tracking-tight">Agents</h1>
-        <Link href="/dashboard/agents/new">
-          <Button>
-            <Plus className="mr-2 h-4 w-4" />
-            New Agent
-          </Button>
-        </Link>
+        <AgentPopUp />
       </div>
 
       {agents.length === 0 ? (
@@ -29,12 +25,7 @@ export default async function AgentsPage() {
           <p className="mt-2 text-center text-sm text-muted-foreground max-w-sm mx-auto">
             You haven&apos;t created any agents yet. Agents are AI chatbots that you can customize and embed on your website.
           </p>
-          <Link href="/dashboard/agents/new" className="mt-6">
-            <Button>
-              <Plus className="mr-2 h-4 w-4" />
-              Create your first agent
-            </Button>
-          </Link>
+          <AgentPopUp />
         </div>
       ) : (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -55,10 +46,12 @@ export default async function AgentsPage() {
                   )}
                 </p>
               </CardContent>
-              <CardFooter className="flex justify-between">
-                <Button variant="outline" asChild>
-                  <Link href={`/dashboard/agents/${agent.id}`}>Edit</Link>
-                </Button>
+              <CardFooter className="flex flex-row gap-2 pt-0">
+                <Link href={`/dashboard/agents/${agent.id}`} className="w-full">
+                  <Button variant="outline" size="sm" className="w-full">
+                    View Details
+                  </Button>
+                </Link>
                 <DeleteAgentButton id={agent.id} />
               </CardFooter>
             </Card>

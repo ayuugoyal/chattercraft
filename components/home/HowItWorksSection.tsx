@@ -1,12 +1,13 @@
 "use client"
 
-import { motion } from "framer-motion";
-import { CheckCircle2, Code, Bot, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion"
+import { CheckCircle2, Code, Bot, ArrowRight } from "lucide-react"
 
 const steps = [
   {
     title: "Create Your AI Agent",
-    description: "Set up your AI assistant in minutes with our intuitive dashboard. Customize its knowledge base and personality.",
+    description:
+      "Set up your AI assistant in minutes with our intuitive dashboard. Customize its knowledge base and personality.",
     icon: Bot,
     color: "from-blue-500 to-blue-600",
   },
@@ -22,7 +23,7 @@ const steps = [
     icon: CheckCircle2,
     color: "from-green-500 to-green-600",
   },
-];
+]
 
 export default function HowItWorksSection() {
   const containerVariants = {
@@ -33,7 +34,7 @@ export default function HowItWorksSection() {
         staggerChildren: 0.2,
       },
     },
-  };
+  }
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -42,7 +43,7 @@ export default function HowItWorksSection() {
       y: 0,
       transition: { duration: 0.5 },
     },
-  };
+  }
 
   return (
     <section id="how-it-works" className="py-24 bg-background">
@@ -57,9 +58,7 @@ export default function HowItWorksSection() {
           <span className="inline-block px-4 py-1.5 mb-4 text-xs font-medium tracking-wider text-primary bg-primary/10 rounded-full uppercase">
             Simple Setup
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            How Chatwise Works
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">How ChattercraftAI Works</h2>
           <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
             Get your AI assistant up and running in three simple steps.
           </p>
@@ -73,13 +72,11 @@ export default function HowItWorksSection() {
           viewport={{ once: true }}
         >
           {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              className="relative"
-              variants={itemVariants}
-            >
+            <motion.div key={index} className="relative" variants={itemVariants}>
               <div className="relative h-full bg-card rounded-2xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow">
-                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r ${step.color} mb-4`}>
+                <div
+                  className={`inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r ${step.color} mb-4`}
+                >
                   <step.icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">{step.title}</h3>
@@ -87,7 +84,7 @@ export default function HowItWorksSection() {
 
                 {index < steps.length - 1 && (
                   <div className="hidden md:block absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 z-10">
-                    <ArrowRight className="w-6 h-6 text-primary/50" />
+                    <ArrowRight className="w-6 h-6 ml-8 text-primary/50" />
                   </div>
                 )}
               </div>
@@ -104,5 +101,5 @@ export default function HowItWorksSection() {
         </motion.div>
       </div>
     </section>
-  );
+  )
 }
