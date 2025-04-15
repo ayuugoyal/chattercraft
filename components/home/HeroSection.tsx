@@ -104,7 +104,7 @@ export default function HeroSection() {
             className="block dark:hidden"
             animationStyle="top-in-bottom-out"
             videoSrc="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
-            thumbnailSrc="/thumbnail.png"
+            thumbnailSrc="/thumbnail2.png"
             thumbnailAlt="Hero Video"
           />
           <HeroVideoDialog
