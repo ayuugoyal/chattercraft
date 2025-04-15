@@ -92,7 +92,7 @@ export default function AgentSettingsPage({ params }: { params: { id: string } }
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <ShopifyIntegration agentId={agentId} />
+              <ShopifyIntegration />
             </CardContent>
           </Card>
         </TabsContent>
