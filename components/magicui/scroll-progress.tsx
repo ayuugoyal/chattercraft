@@ -5,7 +5,8 @@ import { motion, MotionProps, useScroll } from "motion/react";
 import React from "react";
 interface ScrollProgressProps
   extends Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps> {
-  // Custom props can be added here
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 export const ScrollProgress = React.forwardRef<
