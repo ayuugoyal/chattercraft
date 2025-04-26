@@ -54,9 +54,9 @@ Create a `.env.local` file and add your environment variables.
 
 ---
 
-## 📢 Demo
+## 📢 Demo Video
 
-🌐 https://chattercraftai.ayuugoyal.tech/
+https://www.youtube.com/watch?v=ej7Cvlc3glA
 
 ---
 
